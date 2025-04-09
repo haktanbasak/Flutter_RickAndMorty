@@ -20,4 +20,4 @@ Bu proje, Flutter kullanılarak geliştirilmiş basit bir Rick and Morty karakte
 
 ## Notlar
 - Şu an yalnızca sabit karakter verileri gösterilmektedir.
-- İlerleyen aşamalarda API bağlantısı ve detay sayfaları eklenebilir.
+- İlerleyen aşamalarda API bağlantısı ve detay sayfaları eklenecek.

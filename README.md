@@ -1,16 +1,23 @@
-# rickandmorty
+## Rick and Morty Flutter App
 
-A new Flutter project.
+Bu proje, Flutter kullanılarak geliştirilmiş basit bir Rick and Morty karakter listeleme uygulamasıdır.
 
-## Getting Started
+## Özellikler
+- Karakterlerin resim, isim, köken ve durum bilgilerinin gösterimi
+- Modern ve temiz kart tasarımı
+- Yatay (Row) ve dikey (Column) widget yapıları kullanılarak düzenli yerleşim
+- Flutter Stack widget’ı ile üst kısımda aksiyon butonu (örnek: favorilere ekleme simgesi)
 
-This project is a starting point for a Flutter application.
+## Kullanılan Teknolojiler
+- Flutter (Dart)
+- Material Design bileşenleri
 
-A few resources to get you started if this is your first Flutter project:
+## Kurulum
+- git clone https://github.com/haktanbasak/Flutter_RickAndMorty.git
+- cd Flutter_RickAndMorty
+- flutter pub get
+- flutter run
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Notlar
+- Şu an yalnızca sabit karakter verileri gösterilmektedir.
+- İlerleyen aşamalarda API bağlantısı ve detay sayfaları eklenebilir.

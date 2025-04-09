@@ -20,4 +20,6 @@ Bu proje, Flutter kullanılarak geliştirilmiş basit bir Rick and Morty karakte
 
 ## Notlar
 - Şu an yalnızca sabit karakter verileri gösterilmektedir.
-- İlerleyen aşamalarda API bağlantısı ve detay sayfaları eklenecek.
+- İlerleyen aşamalarda API bağlantısı eklenecek.
+- Sayfalama, favorilere ekleme, silme ve arama yapma özellikleri eklenecek
+- Favoriler, Bölümler ve Konumlar sayfaları dizayn edilecek

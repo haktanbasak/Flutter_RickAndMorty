@@ -11,6 +11,7 @@ Bu proje, Flutter kullanılarak geliştirilmiş basit bir Rick and Morty karakte
 ## Kullanılan Teknolojiler
 - Flutter (Dart)
 - Material Design bileşenleri
+- HTTP paketleri ile API çağrıları
 
 ## Kurulum
 - git clone https://github.com/haktanbasak/Flutter_RickAndMorty.git
@@ -19,7 +20,9 @@ Bu proje, Flutter kullanılarak geliştirilmiş basit bir Rick and Morty karakte
 - flutter run
 
 ## Notlar
-- Şu an yalnızca sabit karakter verileri gösterilmektedir.
-- İlerleyen aşamalarda API bağlantısı eklenecek.
-- Sayfalama, favorilere ekleme, silme ve arama yapma özellikleri eklenecek
-- Favoriler, Bölümler ve Konumlar sayfaları dizayn edilecek
+- Şu anda karakter verileri Rick and Morty API'den çekilmektedir.
+- İlerleyen aşamalarda:
+  - Sayfalama (pagination),
+  - Favorilere ekleme ve kaldırma,
+  - Karakterlerde arama yapma,
+  - Favoriler, Bölümler ve Konumlar sayfaları dizayn edilmesi planlanmaktadır.

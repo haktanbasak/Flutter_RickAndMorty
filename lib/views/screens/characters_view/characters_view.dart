@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rickandmorty/views/screens/characters_view/characters_viewmodel.dart';
 import 'package:rickandmorty/views/widgets/character_cardview.dart';
 
-class CharactersView extends StatelessWidget {
+class CharactersView extends StatefulWidget {
   const CharactersView({super.key});
+
+  @override
+  State<CharactersView> createState() => _CharactersViewState();
+}
+
+class _CharactersViewState extends State<CharactersView> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<CharactersViewmodel>().getCharacters();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,37 +26,25 @@ class CharactersView extends StatelessWidget {
           child: Column(
             children: [
               _searchInputWidget(context),
-              CharacterCardview(
-                image:
-                    'https://rickandmortyapi.com/api/character/avatar/88.jpeg',
-                name: 'Rick Sanchez',
-                origin: 'Eart - (C-137)',
-                status: 'Yaşıyor',
-                type: 'İnsan',
-              ),
-              CharacterCardview(
-                image:
-                    'https://rickandmortyapi.com/api/character/avatar/88.jpeg',
-                name: 'Rick Sanchez',
-                origin: 'Eart - (C-137)',
-                status: 'Yaşıyor',
-                type: 'İnsan',
-              ),
-              CharacterCardview(
-                image:
-                    'https://rickandmortyapi.com/api/character/avatar/88.jpeg',
-                name: 'Rick Sanchez',
-                origin: 'Eart - (C-137)',
-                status: 'Yaşıyor',
-                type: 'İnsan',
-              ),
-              CharacterCardview(
-                image:
-                    'https://rickandmortyapi.com/api/character/avatar/88.jpeg',
-                name: 'Rick Sanchez',
-                origin: 'Eart - (C-137)',
-                status: 'Yaşıyor',
-                type: 'İnsan',
+              Consumer<CharactersViewmodel>(
+                builder: (context, viewModel, child) {
+                  if (viewModel.charactersModel == null) {
+                    return CircularProgressIndicator.adaptive();
+                  } else {
+                    return Flexible(
+                      child: ListView.builder(
+                        itemCount: viewModel.charactersModel!.characters.length,
+                        itemBuilder: (context, index) {
+                          final characterModel =
+                              viewModel.charactersModel!.characters[index];
+                          return CharacterCardview(
+                            characterModel: characterModel,
+                          );
+                        },
+                      ),
+                    );
+                  }
+                },
               ),
             ],
           ),

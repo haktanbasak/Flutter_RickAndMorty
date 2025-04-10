@@ -1,20 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:rickandmorty/models/characters_model.dart';
 
 class CharacterCardview extends StatelessWidget {
-  final String image;
-  final String name;
-  final String origin;
-  final String status;
-  final String type;
+  final CharacterModel characterModel;
 
-  const CharacterCardview({
-    super.key,
-    required this.image,
-    required this.name,
-    required this.origin,
-    required this.status,
-    required this.type,
-  });
+  const CharacterCardview({super.key, required this.characterModel});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +23,7 @@ class CharacterCardview extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(6),
-                  child: Image.network(image, height: 100),
+                  child: Image.network(characterModel.image, height: 100),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -44,16 +34,23 @@ class CharacterCardview extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        name,
+                        characterModel.name,
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       SizedBox(height: 5),
-                      _infoWidget(type: "Köken", value: origin),
+                      _infoWidget(
+                        type: "Köken",
+                        value: characterModel.origin.name,
+                      ),
                       SizedBox(height: 4),
-                      _infoWidget(type: "Durum", value: "$status - $type"),
+                      _infoWidget(
+                        type: "Durum",
+                        value:
+                            "${characterModel.status} - ${characterModel.species}",
+                      ),
                     ],
                   ),
                 ),

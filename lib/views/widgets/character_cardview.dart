@@ -1,10 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:rickandmorty/app/locator.dart';
 import 'package:rickandmorty/models/characters_model.dart';
+import 'package:rickandmorty/services/preferences_service.dart';
 
-class CharacterCardview extends StatelessWidget {
+class CharacterCardview extends StatefulWidget {
   final CharacterModel characterModel;
+  final bool isFavorited;
+  final ValueChanged<bool> onFavoriteChanged;
 
-  const CharacterCardview({super.key, required this.characterModel});
+  const CharacterCardview({
+    super.key,
+    required this.characterModel,
+    this.isFavorited = false,
+    required this.onFavoriteChanged,
+  });
+
+  @override
+  State<CharacterCardview> createState() => _CharacterCardviewState();
+}
+
+class _CharacterCardviewState extends State<CharacterCardview> {
+  late bool isFavorited;
+
+  @override
+  void initState() {
+    isFavorited = widget.isFavorited;
+    super.initState();
+  }
+
+  void _favoriteCharacters() {
+    if (isFavorited) {
+      locator<PreferencesService>().removeCharacter(widget.characterModel.id);
+      isFavorited = false;
+    } else {
+      locator<PreferencesService>().saveCharacter(widget.characterModel.id);
+      isFavorited = true;
+    }
+
+    widget.onFavoriteChanged(
+      isFavorited,
+    ); // Favori durumunu üst widget'a bildir
+
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +61,10 @@ class CharacterCardview extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(6),
-                  child: Image.network(characterModel.image, height: 100),
+                  child: Image.network(
+                    widget.characterModel.image,
+                    height: 100,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -34,7 +75,7 @@ class CharacterCardview extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        characterModel.name,
+                        widget.characterModel.name,
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
@@ -43,13 +84,13 @@ class CharacterCardview extends StatelessWidget {
                       SizedBox(height: 5),
                       _infoWidget(
                         type: "Köken",
-                        value: characterModel.origin.name,
+                        value: widget.characterModel.origin.name,
                       ),
                       SizedBox(height: 4),
                       _infoWidget(
                         type: "Durum",
                         value:
-                            "${characterModel.status} - ${characterModel.species}",
+                            "${widget.characterModel.status} - ${widget.characterModel.species}",
                       ),
                     ],
                   ),
@@ -57,7 +98,10 @@ class CharacterCardview extends StatelessWidget {
               ],
             ),
           ),
-          IconButton(onPressed: () {}, icon: Icon(Icons.bookmark_border)),
+          IconButton(
+            onPressed: _favoriteCharacters,
+            icon: Icon(isFavorited ? Icons.bookmark : Icons.bookmark_border),
+          ),
         ],
       ),
     );

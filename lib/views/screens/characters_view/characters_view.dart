@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rickandmorty/views/screens/characters_view/characters_viewmodel.dart';
-import 'package:rickandmorty/views/widgets/character_cardview.dart';
+import 'package:rickandmorty/views/widgets/character_card_listview.dart';
 
 class CharactersView extends StatefulWidget {
   const CharactersView({super.key});
@@ -19,33 +19,22 @@ class _CharactersViewState extends State<CharactersView> {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<CharactersViewmodel>();
+
     return Scaffold(
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 9),
           child: Column(
             children: [
-              _searchInputWidget(context),
-              Consumer<CharactersViewmodel>(
-                builder: (context, viewModel, child) {
-                  if (viewModel.charactersModel == null) {
-                    return CircularProgressIndicator.adaptive();
-                  } else {
-                    return Flexible(
-                      child: ListView.builder(
-                        itemCount: viewModel.charactersModel!.characters.length,
-                        itemBuilder: (context, index) {
-                          final characterModel =
-                              viewModel.charactersModel!.characters[index];
-                          return CharacterCardview(
-                            characterModel: characterModel,
-                          );
-                        },
-                      ),
-                    );
-                  }
-                },
-              ),
+              _searchInputWidget(context, viewModel: viewModel),
+              viewModel.charactersModel == null
+                  ? CircularProgressIndicator.adaptive()
+                  : CharacterCardListview(
+                    characters: viewModel.charactersModel!.characters,
+                    onLoadMore: viewModel.getCharactersMore,
+                    loadMore: viewModel.loadMore,
+                  ),
             ],
           ),
         ),
@@ -53,14 +42,21 @@ class _CharactersViewState extends State<CharactersView> {
     );
   }
 
-  Padding _searchInputWidget(BuildContext context) {
+  Padding _searchInputWidget(
+    BuildContext context, {
+    required CharactersViewmodel viewModel,
+  }) {
     return Padding(
       padding: const EdgeInsets.only(top: 12, bottom: 16),
-      child: TextField(
+      child: TextFormField(
+        textInputAction: TextInputAction.search,
+        onFieldSubmitted: (value) {
+          viewModel.getCharactersByName(value);
+        },
         decoration: InputDecoration(
           border: OutlineInputBorder(),
-          labelStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface),
-          labelText: 'Karakterlerde Ara',
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface),
+          hintText: 'Karakterlerde Ara',
           prefixIcon: Icon(Icons.search),
           suffixIcon: IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
         ),

@@ -6,10 +6,9 @@ Bu proje, Flutter kullanılarak geliştirilmiş basit bir Rick and Morty karakte
 
 - Karakterlerin resim, isim, köken ve durum bilgilerinin gösterimi
 - Modern ve temiz kart tasarımı
-- Yatay (Row) ve dikey (Column) widget yapıları kullanılarak düzenli yerleşim
 - Flutter Stack widget’ı ile üst kısımda aksiyon butonu (örnek: favorilere ekleme simgesi)
-- Şu anda karakter verileri Rick and Morty API'den çekilmektedir.
-- Sayfalama (pagination)
+- Karakter verileri Rick and Morty API'den çekilmektedir.
+- Sayfalama
 - Favorilere ekleme ve kaldırma
 - Karakterlerde arama yapma
 
@@ -29,4 +28,4 @@ Bu proje, Flutter kullanılarak geliştirilmiş basit bir Rick and Morty karakte
 ## Notlar
 
 - İlerleyen aşamalarda:
-  - Favoriler, Bölümler ve Konumlar sayfaları dizayn edilmesi planlanmaktadır.
+  - Bölümler ve Konumlar sayfaları dizayn edilmesi planlanmaktadır.

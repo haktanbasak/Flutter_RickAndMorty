@@ -27,4 +27,8 @@ Bu proje, Flutter kullanılarak geliştirilmiş basit bir Rick and Morty karakte
 
 ## Uygulama Görselleri
 
-![karakterler](uygulama_gorselleri/karakterler.png)
+![Karakterler](uygulama_gorselleri/karakterler.png)
+![KarakterDetay](uygulama_gorselleri/karakter_detay.png)
+![Favoriler](uygulama_gorselleri/favoriler.png)
+![Konumlar](uygulama_gorselleri/konumlar.png)
+

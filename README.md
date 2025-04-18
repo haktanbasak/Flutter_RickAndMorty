@@ -45,6 +45,5 @@ flutter run
   <img src="uygulama_gorselleri/konumlar.png" width="220"/>
 </p>
 
-![Flutter](https://img.shields.io/badge/Flutter-3.19-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+
 

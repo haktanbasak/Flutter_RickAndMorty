@@ -4,6 +4,7 @@ import 'package:rickandmorty/models/characters_model.dart';
 import 'package:rickandmorty/models/episode_model.dart';
 import 'package:rickandmorty/views/screens/character_profile_view/character_profile_viewmodel.dart';
 import 'package:rickandmorty/views/widgets/appbar_widget.dart';
+import 'package:rickandmorty/views/widgets/decorated_container.dart';
 
 class CharacterProfileView extends StatefulWidget {
   final CharacterModel characterModel;
@@ -28,40 +29,18 @@ class _CharacterProfileViewState extends State<CharacterProfileView> {
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppbarWidget(title: 'Karakter', transparentBackground: true),
-        body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/bg-image.png'),
-              alignment: Alignment.topCenter,
-              fit: BoxFit.fitWidth,
-            ),
-          ),
+        body: DecoratedContainer(
+          topChild: _characterAvatar(context),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _characterAvatar(context),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(50),
-                    ),
-                  ),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 13),
-                      _characterName(),
-                      SizedBox(height: 15),
-                      _labelsView(context),
-                      SizedBox(height: 38),
-                      _scenesTitle(),
-                      SizedBox(height: 15),
-                      _episodeListView(),
-                    ],
-                  ),
-                ),
-              ),
+              SizedBox(height: 13),
+              _characterName(),
+              SizedBox(height: 15),
+              _labelsView(context),
+              SizedBox(height: 38),
+              _scenesTitle(),
+              SizedBox(height: 15),
+              _episodeListView(),
             ],
           ),
         ),

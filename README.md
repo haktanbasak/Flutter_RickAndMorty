@@ -25,7 +25,6 @@ Bu proje, Flutter kullanılarak geliştirilmiş basit bir Rick and Morty karakte
 - flutter pub get
 - flutter run
 
-## Notlar
+## Uygulama Görselleri
 
-- İlerleyen aşamalarda:
-  - Bölümler ve Konumlar sayfaları dizayn edilmesi planlanmaktadır.
+![karakterler](uygulama_gorselleri/karakterler.png)

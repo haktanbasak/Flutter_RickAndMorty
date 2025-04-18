@@ -33,6 +33,7 @@ git clone https://github.com/haktanbasak/Flutter_RickAndMorty.git
 cd Flutter_RickAndMorty
 flutter pub get
 flutter run
+```
 
 
 <h2 align="center">📱 Uygulama Görselleri</h2>

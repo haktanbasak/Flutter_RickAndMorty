@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:rickandmorty/app/router.dart';
 import 'package:rickandmorty/models/episode_model.dart';
 
 class EpisodesListview extends StatefulWidget {
@@ -48,6 +50,8 @@ class _EpisodesListviewState extends State<EpisodesListview> {
         return Column(
           children: [
             ListTile(
+              onTap:
+                  () => context.push(AppRoutes.sectionCharacters, extra: model),
               leading: Icon(Icons.face_retouching_natural, size: 36),
               trailing: Icon(Icons.keyboard_arrow_right),
               title: Text(

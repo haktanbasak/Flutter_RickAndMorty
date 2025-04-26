@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:rickandmorty/models/characters_model.dart';
+import 'package:rickandmorty/models/episode_model.dart';
 import 'package:rickandmorty/models/location_model.dart';
 import 'package:rickandmorty/views/app_view.dart';
 import 'package:rickandmorty/views/screens/character_profile_view/character_profile_view.dart';
@@ -14,6 +15,8 @@ import 'package:rickandmorty/views/screens/locations_view/location_viewmodel.dar
 import 'package:rickandmorty/views/screens/locations_view/locations_view.dart';
 import 'package:rickandmorty/views/screens/residents_view/resident_view.dart';
 import 'package:rickandmorty/views/screens/residents_view/resident_viewmodel.dart';
+import 'package:rickandmorty/views/screens/sections_characters_view/section_characters_viewmodel.dart';
+import 'package:rickandmorty/views/screens/sections_characters_view/sections_characters_view.dart';
 import 'package:rickandmorty/views/screens/sections_view/sections_view.dart';
 import 'package:rickandmorty/views/screens/sections_view/sections_viewmodel.dart';
 
@@ -30,6 +33,9 @@ class AppRoutes {
 
   static const String residentsRoute = 'residents';
   static const String residents = '/locations/residents';
+
+  static const String sectionCharactersRoute = 'characters';
+  static const String sectionCharacters = '/sections/characters';
 }
 
 final router = GoRouter(
@@ -110,6 +116,18 @@ final router = GoRouter(
                     create: (context) => SectionsViewmodel(),
                     child: SectionsView(),
                   ),
+              routes: [
+                GoRoute(
+                  path: AppRoutes.sectionCharactersRoute,
+                  builder:
+                      (context, state) => ChangeNotifierProvider(
+                        create: (context) => SectionCharactersViewmodel(),
+                        child: SectionCharactersView(
+                          episodeModel: state.extra as EpisodeModel,
+                        ),
+                      ),
+                ),
+              ],
             ),
           ],
         ),

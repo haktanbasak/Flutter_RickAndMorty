@@ -15,6 +15,7 @@ import 'package:rickandmorty/views/screens/locations_view/locations_view.dart';
 import 'package:rickandmorty/views/screens/residents_view/resident_view.dart';
 import 'package:rickandmorty/views/screens/residents_view/resident_viewmodel.dart';
 import 'package:rickandmorty/views/screens/sections_view/sections_view.dart';
+import 'package:rickandmorty/views/screens/sections_view/sections_viewmodel.dart';
 
 final _routerKey = GlobalKey<NavigatorState>();
 
@@ -104,7 +105,11 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: AppRoutes.sections,
-              builder: (context, state) => SectionsView(),
+              builder:
+                  (context, state) => ChangeNotifierProvider(
+                    create: (context) => SectionsViewmodel(),
+                    child: SectionsView(),
+                  ),
             ),
           ],
         ),

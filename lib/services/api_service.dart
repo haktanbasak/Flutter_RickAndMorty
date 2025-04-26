@@ -45,6 +45,15 @@ class ApiService {
     }
   }
 
+  Future<EpisodeModels> getAllEpisodes({String? url}) async {
+    try {
+      final response = await _dio.get(url ?? '/episode');
+      return EpisodeModels.fromMap(response.data);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<List<EpisodeModel>> getMultipleEpisode(List<String> list) async {
     try {
       final List<String> episodeNumbers =

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rickandmorty/models/characters_model.dart';
-import 'package:rickandmorty/models/episode_model.dart';
 import 'package:rickandmorty/views/screens/character_profile_view/character_profile_viewmodel.dart';
 import 'package:rickandmorty/views/widgets/appbar_widget.dart';
 import 'package:rickandmorty/views/widgets/decorated_container.dart';
+import 'package:rickandmorty/views/widgets/episodes_listview.dart';
 
 class CharacterProfileView extends StatefulWidget {
   final CharacterModel characterModel;
@@ -52,32 +52,7 @@ class _CharacterProfileViewState extends State<CharacterProfileView> {
     return Flexible(
       child: Consumer<CharacterProfileViewmodel>(
         builder: (context, viewModel, child) {
-          return ListView.separated(
-            padding: EdgeInsets.zero,
-            itemCount: viewModel.episodes.length,
-            itemBuilder: (context, index) {
-              final EpisodeModel model = viewModel.episodes[index];
-              return ListTile(
-                leading: Icon(Icons.face_retouching_natural, size: 36),
-                trailing: Icon(Icons.keyboard_arrow_right),
-                title: Text(
-                  model.episode,
-                  style: TextStyle(fontWeight: FontWeight.w500),
-                ),
-                subtitle: Text(
-                  model.name,
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
-                ),
-              );
-            },
-            separatorBuilder:
-                (context, index) => Divider(
-                  color: Theme.of(context).colorScheme.tertiary,
-                  indent: 30,
-                  endIndent: 30,
-                  height: 0,
-                ),
-          );
+          return EpisodesListview(episodes: viewModel.episodes);
         },
       ),
     );

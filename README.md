@@ -1,28 +1,35 @@
 # 🚀 Rick and Morty Flutter App
 
-Flutter ile geliştirilmiş bu mobil uygulama, Rick and Morty evreninden karakterleri listeler, detaylarını gösterir, favorilere ekleme imkânı sunar ve bölümlerin geçtiği konumları listeler. Modern arayüzü ve kullanıcı dostu deneyimiyle hem eğlenceli hem de geliştirici dostu bir örnek projedir.
+Bu proje, Rick and Morty evrenindeki karakterleri, bölümleri ve diğer detayları keşfetmek için geliştirilmiş bir Flutter uygulamasıdır.
 
 ---
 
 ## ✨ Özellikler
 
-- ✅ Karakterlerin resim, isim, köken ve durum bilgilerinin gösterimi  
-- 🧱 Temiz ve modern kart tasarımı  
-- ⭐️ Stack widget ile aksiyon butonları (örnek: favorilere ekleme)  
-- 🌐 Gerçek zamanlı veri çekimi (Rick and Morty API)  
-- 📄 Sayfalama ile akıcı listeleme  
-- ❤️ Favorilere ekleme ve kaldırma  
-- 🔍 Gerçek zamanlı karakter arama
+- ✅ Karakterlerin resim, isim, köken ve durum bilgilerinin gösterimi
+- ⏫ Bölümler ve bölümlere ait karakterleri görüntüleme
+- 🌍 Konumlar ve o konumlarda bulunan karakterler
+- 🧱 Temiz ve modern kart tasarımı
+- ⭐️ Stack widget ile aksiyon butonları (örnek: favorilere ekleme)
+- 🌐 Gerçek zamanlı veri çekimi (Rick and Morty API)
+- 📄 Sayfalama ile akıcı listeleme
+- ❤️ Favorilere ekleme ve kaldırma
+- 🔍 Gerçek zamanlı karakter arama ve statüye göre filtreleme
+- 🔨 Ayarlar sayfası ve karanlık mod
 
 ---
 
 ## 🛠️ Kullanılan Teknolojiler
 
 - 💙 Flutter (Dart)
-- 🎨 Material Design bileşenleri
-- 🌐 HTTP paketleri ile API çağrıları
+- 🎨 Provider (State Management)
+- 🌐 REST API
 
 ---
+
+## API
+
+Bu proje, [Rick and Morty API](https://rickandmortyapi.com/) kullanılarak geliştirilmiştir. API, karakterler, bölümler ve mekanlar hakkında bilgi sağlar.
 
 ## 🧩 Kurulum
 
@@ -35,7 +42,6 @@ flutter pub get
 flutter run
 ```
 
-
 <h2 align="center">📱 Uygulama Görselleri</h2>
 
 <p align="center">
@@ -43,7 +49,6 @@ flutter run
   <img src="uygulama_gorselleri/karakter_detay.png" width="220"/>
   <img src="uygulama_gorselleri/favoriler.png" width="220"/>
   <img src="uygulama_gorselleri/konumlar.png" width="220"/>
+  <img src="uygulama_gorselleri/bolumler.png" width="220"/>
+  <img src="uygulama_gorselleri/karanlikMod.png" width="220"/>
 </p>
-
-
-

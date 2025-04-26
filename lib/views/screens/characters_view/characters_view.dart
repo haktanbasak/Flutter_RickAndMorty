@@ -60,7 +60,20 @@ class _CharactersViewState extends State<CharactersView> {
           hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface),
           hintText: 'Karakterlerde Ara',
           prefixIcon: Icon(Icons.search),
-          suffixIcon: IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
+          suffixIcon: PopupMenuButton(
+            icon: Icon(Icons.more_vert),
+            onSelected: viewModel.onCharacterStatusChanged,
+            itemBuilder: (context) {
+              return CharacterStatus.values
+                  .map(
+                    (e) => PopupMenuItem<CharacterStatus>(
+                      value: e,
+                      child: Text(e.name),
+                    ),
+                  )
+                  .toList();
+            },
+          ),
         ),
       ),
     );

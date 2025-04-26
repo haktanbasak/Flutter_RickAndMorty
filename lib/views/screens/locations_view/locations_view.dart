@@ -35,24 +35,22 @@ class _LocationsViewState extends State<LocationsView> {
     );
   }
 
-  Flexible _locationListView() {
-    return Flexible(
-      child: Consumer<LocationViewmodel>(
-        builder: (context, viewModel, child) {
-          if (viewModel.locationModel == null) {
-            return Center(child: CircularProgressIndicator.adaptive());
-          } else {
-            return Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: LocationListview(
-                locationModel: viewModel.locationModel!,
-                onLoadMore: viewModel.getMoreLocation,
-                loadMore: viewModel.loadMore,
-              ),
-            );
-          }
-        },
-      ),
+  Widget _locationListView() {
+    return Consumer<LocationViewmodel>(
+      builder: (context, viewModel, child) {
+        if (viewModel.locationModel == null) {
+          return Center(child: CircularProgressIndicator.adaptive());
+        } else {
+          return Padding(
+            padding: const EdgeInsets.only(top: 30),
+            child: LocationListview(
+              locationModel: viewModel.locationModel!,
+              onLoadMore: viewModel.getMoreLocation,
+              loadMore: viewModel.loadMore,
+            ),
+          );
+        }
+      },
     );
   }
 }

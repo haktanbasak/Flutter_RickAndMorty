@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:rickandmorty/app/router.dart';
 import 'package:rickandmorty/models/location_model.dart';
 
 class LocationListview extends StatefulWidget {
@@ -49,6 +51,7 @@ class _LocationListviewState extends State<LocationListview> {
         return Column(
           children: [
             ListTile(
+              onTap: () => context.push(AppRoutes.residents, extra: location),
               leading: Icon(Icons.location_pin),
               trailing: Icon(Icons.keyboard_arrow_right),
               title: Text(

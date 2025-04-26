@@ -72,4 +72,15 @@ class ApiService {
       rethrow;
     }
   }
+
+  Future<List<CharacterModel>> getResidents(List<String> residentsUrl) async {
+    final List<int> idList =
+        residentsUrl.map((e) => int.parse(e.split('/').last)).toList();
+
+    try {
+      return getMultipleCharacters(idList);
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

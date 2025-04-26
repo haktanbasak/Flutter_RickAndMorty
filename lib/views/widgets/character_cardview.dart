@@ -86,33 +86,37 @@ class _CharacterCardviewState extends State<CharacterCardview> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 6,
-                      horizontal: 17,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.characterModel.name,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 6,
+                        horizontal: 17,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.characterModel.name,
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              overflow: TextOverflow.clip,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 5),
-                        _infoWidget(
-                          type: "Köken",
-                          value: widget.characterModel.origin.name,
-                        ),
-                        SizedBox(height: 4),
-                        _infoWidget(
-                          type: "Durum",
-                          value:
-                              "${widget.characterModel.status} - ${widget.characterModel.species}",
-                        ),
-                      ],
+                          SizedBox(height: 5),
+                          _infoWidget(
+                            type: "Köken",
+                            value: widget.characterModel.origin.name,
+                          ),
+                          SizedBox(height: 4),
+                          _infoWidget(
+                            type: "Durum",
+                            value:
+                                "${widget.characterModel.status} - ${widget.characterModel.species}",
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],

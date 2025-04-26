@@ -19,6 +19,8 @@ import 'package:rickandmorty/views/screens/sections_characters_view/section_char
 import 'package:rickandmorty/views/screens/sections_characters_view/sections_characters_view.dart';
 import 'package:rickandmorty/views/screens/sections_view/sections_view.dart';
 import 'package:rickandmorty/views/screens/sections_view/sections_viewmodel.dart';
+import 'package:rickandmorty/views/screens/settings_view/settings_view.dart';
+import 'package:rickandmorty/views/screens/settings_view/settings_viewmodel.dart';
 
 final _routerKey = GlobalKey<NavigatorState>();
 
@@ -36,6 +38,8 @@ class AppRoutes {
 
   static const String sectionCharactersRoute = 'characters';
   static const String sectionCharacters = '/sections/characters';
+
+  static const String settings = '/settings';
 }
 
 final router = GoRouter(
@@ -132,6 +136,14 @@ final router = GoRouter(
           ],
         ),
       ],
+    ),
+    GoRoute(
+      path: AppRoutes.settings,
+      builder:
+          (context, state) => ChangeNotifierProvider(
+            create: (context) => SettingsViewmodel(),
+            child: SettingsView(),
+          ),
     ),
   ],
 );

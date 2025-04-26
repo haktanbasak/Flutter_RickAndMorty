@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:rickandmorty/app/router.dart';
 
 class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool transparentBackground;
+  final bool hideSettings;
   const AppbarWidget({
     super.key,
     required this.title,
     this.transparentBackground = false,
+    this.hideSettings = false,
   });
 
   @override
@@ -17,7 +21,13 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
         title,
         style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
       ),
-      actions: [IconButton(onPressed: () {}, icon: Icon(Icons.settings))],
+      actions: [
+        if (!hideSettings)
+          IconButton(
+            onPressed: () => context.push(AppRoutes.settings),
+            icon: Icon(Icons.settings),
+          ),
+      ],
     );
   }
 
